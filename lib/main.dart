@@ -14,15 +14,23 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int dadoIz=1;
+
+  int dadoDer=6;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.purple,
         appBar: AppBar(
           title: const Text('Dice app'),
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.purple,
           centerTitle: true,
           elevation: 10.0,
         ),
@@ -31,17 +39,23 @@ class HomePage extends StatelessWidget {
             children: [
               Expanded(
                 flex: 1,
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Image.asset("assets/images/dice2.png"),
-                )
+                child: TextButton(
+                  onPressed: () {
+                    print("Dado izquierdo");
+                    dadoIz=4;
+                    print(dadoIz);
+                  },
+                  child: Image.asset("assets/images/dice$dadoIz.png")
+                ),
               ),
               Expanded(
                 flex: 1,
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Image.asset("assets/images/dice3.png"),
-                )
+                child: TextButton(
+                  onPressed: () {
+                    print("Dado derecho");
+                  },
+                  child: Image.asset("assets/images/dice$dadoDer.png")
+                ),
               ),
             ],
           ),
